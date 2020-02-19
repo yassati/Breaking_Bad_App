@@ -8,8 +8,10 @@ import {
   ActivityIndicator,
   Image,
   Share,
+  TouchableOpacity
 } from "react-native";
 import { Button, Card } from "react-native-paper";
+import * as RootNavigation from "../RootNavigation";
 
 export default class Torchh extends Component {
   constructor(props) {
@@ -35,26 +37,7 @@ export default class Torchh extends Component {
         console.error(error);
       });
   }
-  onShare = async () => {
-    try {
-      const result = await Share.share({
-        message:
-          "React Native | A framework for building native apps using React"
-      });
 
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  };
   render() {
     if (this.state.isLoading) {
       return (
@@ -67,7 +50,6 @@ export default class Torchh extends Component {
       <ScrollView keyboardShouldPersistTaps="handled">
         <SafeAreaView>
           <View style={styles.container}>
-            <Button onPress={this.onShare}>test</Button>
             {this.state.dataSource.map(item => {
               return (
                 <Card style={styles.card}>
@@ -82,7 +64,20 @@ export default class Torchh extends Component {
                     <View style={{ flex: 1 }}>
                       <View style={{ marginLeft: 20 }}>
                         <Text style={styles.owner_title}>{item.name}</Text>
-                        <Text>Voir plus des détails</Text>
+                        <TouchableOpacity
+                          onPress={() => {
+                            RootNavigation.navigate(
+                              "TestModal",
+                              {
+                                idChar: item.char_id
+                              }
+                            );
+                          }}
+                        >
+                          <Text style={{ color: "gray" }}>
+                            Voir plus des détails
+                          </Text>
+                        </TouchableOpacity>
                       </View>
                     </View>
                   </View>
