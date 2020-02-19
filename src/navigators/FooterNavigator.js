@@ -2,6 +2,7 @@ import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import HomeNavigator from "./stackNavigators/HomeNavigator";
 import MapNavigator from "./stackNavigators/MapNavigator";
+import TorchNavigator from "./stackNavigators/TorchNavigator";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const Tab = createMaterialBottomTabNavigator();
@@ -32,6 +33,16 @@ export default class FooterNavigator extends React.Component {
             tabBarLabel: "Map",
             tabBarIcon: ({ color }) => (
               <Icon name="map" color={color} size={16} />
+            )
+          }}
+        />
+        <Tab.Screen
+          name="Torch"
+          component={TorchNavigator}
+          options={{
+            tabBarLabel: "Map",
+            tabBarIcon: ({ color }) => (
+              <Icon name="bolt" color={color} size={16} />
             )
           }}
         />

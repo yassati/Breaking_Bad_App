@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity, Linking } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Linking,
+  SafeAreaView,
+  ScrollView,
+  Share
+} from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
 export default class Map extends Component {
@@ -7,19 +15,22 @@ export default class Map extends Component {
     super(props);
     this.state = {
       address: "Paris",
-      numbrePhone: "0606060606"
     };
   }
+  onShare = async () => {
+    try {
+      await Share.share({
+        message: this.state.address
+      });
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   render() {
     return (
-      <View>
-        <View
-          style={{
-            height: 400
-          }}
-        >
-          <Text> Map </Text>
+      <ScrollView keyboardShouldPersistTaps="handled">
+        <SafeAreaView>
           <GooglePlacesAutocomplete
             placeholder="Lieu"
             minLength={1}
@@ -34,9 +45,9 @@ export default class Map extends Component {
             onPress={(data, details = null) => {
               this.setState({ address: data.description });
             }}
-            getDefaultValue={() => "Paris"}
+            getDefaultValue={() => ""}
             query={{
-              key: "api key",
+              key: "test",
               language: "fr"
             }}
             nearbyPlacesAPI="GooglePlacesSearch"
@@ -53,53 +64,80 @@ export default class Map extends Component {
             ]}
             debounce={200}
             styles={{
+              container: {
+                backgroundColor: "white",
+                margin: 20
+              },
               textInputContainer: {
                 backgroundColor: "rgba(0,0,0,0)",
                 borderTopWidth: 0,
-                borderBottomWidth: 0
+                borderBottomWidth: 0,
+                width: "100%"
               },
               textInput: {
                 marginLeft: 0,
                 marginRight: 0,
                 height: 38,
                 color: "#5d5d5d",
-                fontSize: 16,
-                borderWidth: 1,
-                borderColor: "rgba(0, 0, 0, 0.3)",
-                borderRadius: 10
+                fontSize: 16
               },
               predefinedPlacesDescription: {
-                backgroundColor: "red"
+                color: "#1faadb"
               }
             }}
           />
-        </View>
-        <TouchableOpacity
-          onPress={() => {
-            if (Platform.OS === "ios") {
-              Linking.openURL(
-                `http://maps.apple.com/?daddr=${this.state.address}`
-              );
-            } else {
-              Linking.openURL(
-                `http://maps.google.com/?daddr=${this.state.address}`
-              );
-            }
-          }}
-        >
-          <Text style={{ color: "#00cc66" }}>Voir sur une carte</Text>
-        </TouchableOpacity>
+          <View style={{ margin: 20 }}>
+            <TouchableOpacity
+              onPress={() => {
+                if (Platform.OS === "ios") {
+                  Linking.openURL(
+                    `http://maps.apple.com/?daddr=${this.state.address}`
+                  );
+                } else {
+                  Linking.openURL(
+                    `http://maps.google.com/?daddr=${this.state.address}`
+                  );
+                }
+              }}
+              style={{
+                backgroundColor: "#00cc66",
+                padding: 12,
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 20,
+                borderColor: "rgba(0, 0, 0, 0.1)",
+                fontWeight: "bold",
+                width: 250,
+                marginLeft: "auto",
+                marginRight: "auto"
+              }}
+            >
+              <Text style={{ color: "white" }}>Voir sur une carte</Text>
+            </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => {
-            Linking.openURL(
-              `sms:${this.state.numbrePhone}?body=${this.state.address}`
-            );
-          }}
-        >
-          <Text style={{ color: "#00cc66" }}>Contacter</Text>
-        </TouchableOpacity>
-      </View>
+            <TouchableOpacity
+              onPress={
+                this.onShare
+              }
+              style={{
+                backgroundColor: "#00cc66",
+                padding: 12,
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 20,
+                borderColor: "rgba(0, 0, 0, 0.1)",
+                fontWeight: "bold",
+                width: 250,
+                marginLeft: "auto",
+                marginTop: 20,
+                marginRight: "auto"
+              }}
+            >
+              <Text style={{ color: "white" }}>SEND SMS</Text>
+            </TouchableOpacity>
+          </View>
+        </SafeAreaView>
+      </ScrollView>
     );
   }
 }
