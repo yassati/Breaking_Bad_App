@@ -2,7 +2,7 @@ import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import HomeNavigator from "./stackNavigators/HomeNavigator";
 import MapNavigator from "./stackNavigators/MapNavigator";
-import TorchNavigator from "./stackNavigators/TorchNavigator";
+import CharactersNavigator from "./stackNavigators/CharactersNavigator";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const Tab = createMaterialBottomTabNavigator();
@@ -22,7 +22,7 @@ export default class FooterNavigator extends React.Component {
           options={{
             tabBarLabel: "Home",
             tabBarIcon: ({ color }) => (
-              <Icon name="rocket" color={color} size={16} />
+              <Icon name="home" color={color} size={20} />
             )
           }}
         />
@@ -32,17 +32,17 @@ export default class FooterNavigator extends React.Component {
           options={{
             tabBarLabel: "Map",
             tabBarIcon: ({ color }) => (
-              <Icon name="map" color={color} size={16} />
+              <Icon name="map" color={color} size={20} />
             )
           }}
         />
         <Tab.Screen
-          name="Torch"
-          component={TorchNavigator}
+          name="Characters"
+          component={CharactersNavigator}
           options={{
-            tabBarLabel: "Map",
+            tabBarLabel: "Characters",
             tabBarIcon: ({ color }) => (
-              <Icon name="bolt" color={color} size={16} />
+              <Icon name="users" color={color} size={20} />
             )
           }}
         />

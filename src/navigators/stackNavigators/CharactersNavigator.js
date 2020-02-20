@@ -1,5 +1,5 @@
 import React from "react";
-import TorchhScreen from "../../screens/Torchh";
+import CharactersScreen from "../../screens/Characters";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();
@@ -9,8 +9,8 @@ export default class MapNavigator extends React.Component {
     return (
       <Stack.Navigator>
         <Stack.Screen
-          name="Torch"
-          component={TorchhScreen}
+          name="Characters"
+          component={CharactersScreen}
         />
       </Stack.Navigator>
     );

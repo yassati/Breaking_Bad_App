@@ -13,7 +13,7 @@ import {
 import { Button, Card } from "react-native-paper";
 import * as RootNavigation from "../RootNavigation";
 
-export default class Torchh extends Component {
+export default class Characters extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,7 +52,7 @@ export default class Torchh extends Component {
           <View style={styles.container}>
             {this.state.dataSource.map(item => {
               return (
-                <Card style={styles.card}>
+                <Card key={item.char_id} style={styles.card}>
                   <View style={styles.flex}>
                     <Image
                       style={[{ width: 80, height: 120 }, styles.avatar]}
@@ -66,16 +66,13 @@ export default class Torchh extends Component {
                         <Text style={styles.owner_title}>{item.name}</Text>
                         <TouchableOpacity
                           onPress={() => {
-                            RootNavigation.navigate(
-                              "TestModal",
-                              {
-                                idChar: item.char_id
-                              }
-                            );
+                            RootNavigation.navigate("TestModal", {
+                              idChar: item.char_id, name: item.name
+                            });
                           }}
                         >
                           <Text style={{ color: "gray" }}>
-                            Voir plus des détails
+                          See more details...
                           </Text>
                         </TouchableOpacity>
                       </View>
