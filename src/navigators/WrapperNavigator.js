@@ -3,9 +3,11 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import FooterNavigator from "./FooterNavigator";
+import HomeNavigator from "./stackNavigators/HomeNavigator";
+import CharactersNavigator from "./stackNavigators/CharactersNavigator";
+import InfoNavigator from "./stackNavigators/InfoNavigator";
 // Import modals
 import TestModal from "../screens/TestModal";
-
 
 import { navigationRef } from "../RootNavigation";
 
@@ -17,6 +19,9 @@ class NavigationDrawerContainerApp extends React.Component {
     return (
       <Drawer.Navigator initialRouteName="Main" drawerPosition="right">
         <Drawer.Screen name="Main" component={FooterNavigator} />
+        <Drawer.Screen name="Home" component={HomeNavigator} />
+        <Drawer.Screen name="Characters" component={CharactersNavigator} />
+        <Drawer.Screen name="Info" component={InfoNavigator} />
       </Drawer.Navigator>
     );
   }

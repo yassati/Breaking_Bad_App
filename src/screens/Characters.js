@@ -8,7 +8,8 @@ import {
   ActivityIndicator,
   Image,
   Share,
-  TouchableOpacity
+  TouchableOpacity,
+  Vibration
 } from "react-native";
 import { Button, Card } from "react-native-paper";
 import * as RootNavigation from "../RootNavigation";
@@ -68,7 +69,7 @@ export default class Characters extends Component {
                           onPress={() => {
                             RootNavigation.navigate("TestModal", {
                               idChar: item.char_id, name: item.name
-                            });
+                            }), Vibration.vibrate([0, 500, 100, 200])
                           }}
                         >
                           <Text style={{ color: "gray" }}>

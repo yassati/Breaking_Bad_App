@@ -13,7 +13,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "http://fr.web.img4.acsta.net/r_1280_720/pictures/19/06/18/12/11/3956503.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

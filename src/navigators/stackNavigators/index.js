@@ -1,7 +1,9 @@
 import HomeNavigator from "./HomeNavigator";
-import TestNavigator from "./TestNavigator";
+import MapNavigator from "./MapNavigator";
+import CharactersNavigator from "./CharactersNavigator";
 
 export default {
   HomeNavigator,
-  TestNavigator,
+  MapNavigator,
+  CharactersNavigator
 };

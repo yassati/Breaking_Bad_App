@@ -100,7 +100,7 @@ export default class Map extends Component {
                 }
               }}
               style={{
-                backgroundColor: "#00cc66",
+                backgroundColor: "#f7b731",
                 padding: 12,
                 justifyContent: "center",
                 alignItems: "center",
@@ -120,7 +120,7 @@ export default class Map extends Component {
                 this.onShare
               }
               style={{
-                backgroundColor: "#00cc66",
+                backgroundColor: "#f7b731",
                 padding: 12,
                 justifyContent: "center",
                 alignItems: "center",

@@ -1,16 +1,16 @@
 import React from "react";
-import CharactersScreen from "../../screens/Characters";
+import InfoScreen from "../../screens/Info";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();
 
-export default class CharactersNavigator extends React.Component {
+export default class MapNavigator extends React.Component {
   render() {
     return (
       <Stack.Navigator>
         <Stack.Screen
-          name="Characters"
-          component={CharactersScreen}
+          name="Info"
+          component={InfoScreen}
         />
       </Stack.Navigator>
     );

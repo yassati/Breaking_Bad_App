@@ -2,6 +2,7 @@ import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import HomeNavigator from "./stackNavigators/HomeNavigator";
 import MapNavigator from "./stackNavigators/MapNavigator";
+import InfoNavigator from "./stackNavigators/InfoNavigator";
 import CharactersNavigator from "./stackNavigators/CharactersNavigator";
 import Icon from "react-native-vector-icons/FontAwesome";
 
@@ -21,19 +22,7 @@ export default class FooterNavigator extends React.Component {
           component={HomeNavigator}
           options={{
             tabBarLabel: "Home",
-            tabBarIcon: ({ color }) => (
-              <Icon name="home" color={color} size={20} />
-            )
-          }}
-        />
-        <Tab.Screen
-          name="Map"
-          component={MapNavigator}
-          options={{
-            tabBarLabel: "Map",
-            tabBarIcon: ({ color }) => (
-              <Icon name="map" color={color} size={20} />
-            )
+            tabBarIcon: () => <Icon name="home" color={"#f7b731"} size={20} />
           }}
         />
         <Tab.Screen
@@ -41,9 +30,23 @@ export default class FooterNavigator extends React.Component {
           component={CharactersNavigator}
           options={{
             tabBarLabel: "Characters",
-            tabBarIcon: ({ color }) => (
-              <Icon name="users" color={color} size={20} />
-            )
+            tabBarIcon: () => <Icon name="users" color={"#f7b731"} size={20} />
+          }}
+        />
+        <Tab.Screen
+          name="Info"
+          component={InfoNavigator}
+          options={{
+            tabBarLabel: "Info",
+            tabBarIcon: () => <Icon name="info-circle" color={"#f7b731"} size={20} />
+          }}
+        />
+        <Tab.Screen
+          name="Map"
+          component={MapNavigator}
+          options={{
+            tabBarLabel: "Map",
+            tabBarIcon: () => <Icon name="map" color={"#f7b731"} size={20} />
           }}
         />
       </Tab.Navigator>

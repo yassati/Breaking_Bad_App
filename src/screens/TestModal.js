@@ -128,7 +128,7 @@ export default class TestModal extends Component {
                       <TouchableOpacity
                         onPress={this.onShare}
                         style={{
-                          backgroundColor: "#00cc66",
+                          backgroundColor: "#f7b731",
                           padding: 12,
                           justifyContent: "center",
                           alignItems: "center",
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   header: {
-    backgroundColor: "#00CC66",
+    backgroundColor: "#f7b731",
     paddingLeft: 10,
     paddingRight: 10,
     paddingTop: 5,
